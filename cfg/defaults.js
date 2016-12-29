@@ -45,11 +45,15 @@ function getDefaultModules() {
         loader: 'style-loader!css-loader!stylus-loader'
       },
       {
-        test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+        test: /\.(svg)$/,
+        loader: 'raw-loader'
+      },
+      {
+        test: /\.(png|woff|woff2|eot|ttf)$/,
         loader: 'url-loader?limit=8192'
       },
       {
-        test: /\.(mp4|ogg|svg)$/,
+        test: /\.(mp4|ogg)$/,
         loader: 'file-loader'
       }
     ]
