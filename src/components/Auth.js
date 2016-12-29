@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AuthTab from './auth/authTab';
+import OauthButton from './auth/oauthButton'
 
 class AuthComponent extends Component {
   constructor() {
@@ -42,14 +43,16 @@ class AuthComponent extends Component {
 
     return (
       <div className="auth-pane">
-        <AuthTab logIn={this.logIn} signUp={this.signUp} isLogIn={this.state.isLogIn} />
+        <AuthTab
+          logIn={this.logIn}
+          signUp={this.signUp}
+          isLogIn={this.state.isLogIn}
+        />
         <div className="auth-content">
-          <div className="auth-oauth">
-            <button className="oauth-button">
-              <div className="oauth-icon twitter-icon"></div>
-              <div className="oauth-button-text">Log in with twitter</div>
-            </button>
-          </div>
+          <OauthButton
+            isLogIn={this.state.isLogIn}
+            provider="twitter"
+          />
           <div className="auth-email">
             <p className="auth-seperator">or</p>
             <div className="input-wrapper">
