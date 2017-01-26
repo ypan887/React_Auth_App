@@ -1,11 +1,22 @@
 import 'core-js/fn/object/assign';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { browserHistory } from 'react-router';
-import Root from './container/root';
+import { Provider } from 'react-redux';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import authStore from './stores/authStore';
+import App from './containers/App';
+import { requireAuthentication } from './containers/AuthenticatedComponent';
+import LoggedinView from './components/LoggedinView';
 
-// Render the main component into the dom
+// import User from '../components/User'
+
 ReactDOM.render(
-  <Root history={browserHistory} />,
+  <Provider store={authStore}>
+    <Router history={browserHistory}>
+      <Route path='/' component={App}>
+        <IndexRoute component={requireAuthentication(LoggedinView)}/>
+      </Route>
+    </Router>
+  </Provider>,
   document.getElementById('app')
 );

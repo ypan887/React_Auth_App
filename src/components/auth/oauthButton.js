@@ -7,8 +7,14 @@ class OauthButtonComponent extends Component {
     let authUrl = BASEURL
                 + `/auth/${this.props.provider}`
                 + '?auth_origin_url=http://localhost:8000'
-    //let popWin = window.open(authUrl)
-    window.location = authUrl;
+    let popWin = window.open(authUrl)
+    window.addEventListener("message",
+      function(e) {
+        window.focus();
+        debugger;
+      }, false);
+
+    //window.location = authUrl;
     /*
     fetch(
       authUrl, {
@@ -17,7 +23,7 @@ class OauthButtonComponent extends Component {
       }
     )
     .then(function(response) {
-      debugger;
+      response.redirect("www.google.com")
       return true;
     });
     */
