@@ -5,13 +5,13 @@ import AuthTab from '../components/AuthTab';
 import AuthContent from '../components/AuthContent';
 import { toggleTab } from '../actions';
 
-let AuthWrapper = ({currentTab, toggleTab}) => (
+let AuthWrapper = ({currentTab, toggleTab, hideModal}) => (
   <div>
     <AuthTab
       toggleTab = {toggleTab}
       currentTab = {currentTab}
     />
-    <AuthContent currentTab = {currentTab} />
+    <AuthContent currentTab = {currentTab} hideModal= {hideModal}/>
   </div>
 )
 

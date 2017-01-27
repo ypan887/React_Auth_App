@@ -18,6 +18,14 @@ export const login = (userName) => {
   }
 }
 
+export const logout = () => {
+  setAuthorizationToken();
+  localStorage.removeItem('auth');
+  return {
+    type: "LOGGED_OUT"
+  }
+}
+
 export const handleToken = (data) => {
   return (dispatch, getState) => {
     let auth = {
@@ -25,32 +33,23 @@ export const handleToken = (data) => {
       "client": data["client_id"],
       "uid": data["uid"]
     };
-    localStorage.setItem('auth', auth);
+    localStorage.setItem('auth', JSON.stringify(auth));
     setAuthorizationToken(auth);
     dispatch(login(data["user_name"]))
     browserHistory.push('/');
   }
 }
 
-export const validateToken = () => {
-  let auth = localStorage.auth;
-  if (auth) {
-    setAuthorizationToken(auth);
-    return (dispatch, getState) => {
-      axios.get(url)
-        .then(function (response) {
-          console.log(response);
-          debugger;
-        })
-        .then((userName)=>{
-          dispatch(login(userName))
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    }
+export const validateToken = (auth) => {
+  setAuthorizationToken(JSON.parse(auth));
+  return (dispatch, getState) => {
+    axios.get(url)
+      .then((response) => {
+        let data = response.data.data;
+        return data['name'] || data['nickname'];
+      }, () => { localStorage.removeItem('auth'); })
+      .then((userName)=>{
+        dispatch(login(userName));
+      })
   }
 }
-
-//export const logout
-// log out action

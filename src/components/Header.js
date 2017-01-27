@@ -7,14 +7,10 @@ class HeaderComponent extends Component {
   constructor() {
     super();
     this.login = this.login.bind(this);
-    this.logout = this.logout.bind(this);
   }
 
   login() {
     this.refs.modal.show();
-  }
-
-  logout() {
   }
 
   hideModal(){
@@ -39,14 +35,14 @@ class HeaderComponent extends Component {
         <Nav>
           <NavItem onClick={this.login} className={loginClassName}>
             login
-            <Modal ref="modal" modalStyle={modalStyle}>
+            <Modal ref="modal" modalStyle={modalStyle} >
               <div className="auth-pane">
-                <AuthWrapper />
+                <AuthWrapper hideModal={this.hideModal.bind(this)}/>
               </div>
             </Modal>
           </NavItem>
           <NavItem
-            onClick={this.logout}
+            onClick={this.props.logout}
             className={logoutClassName}
           >Logout</NavItem>
         </Nav>

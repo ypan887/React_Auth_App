@@ -1,9 +1,10 @@
 import React from 'react';
 
-const LoggedinView = (userName) => {
+const LoggedinView = (props) => {
+  const text = `Welcome ${props.userName}! You have loggedin`;
   return (
-    <h2>Welcome! you have loggedin</h2>
-  )
+    <h2>{text}</h2>
+  );
 }
 
 export default LoggedinView;

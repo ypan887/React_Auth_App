@@ -4,7 +4,7 @@ import 'styles/App.scss';
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux';
-import { validateToken, handleToken } from '../actions';
+import { validateToken, handleToken, logout } from '../actions';
 import Header from '../components/Header';
 import MainSection from '../components/MainSection';
 import setAuthorizationToken from '../utils/setAuthorizationToken';
@@ -15,7 +15,10 @@ class App extends Component {
   }
 
   componentWillMount(){
-    this.props.validateToken;
+    let auth = localStorage.getItem('auth');
+    if (auth) {
+      this.props.validateToken(auth);
+    }
   }
 
   componentDidMount(){
@@ -31,7 +34,7 @@ class App extends Component {
   render(){
     return(
       <div>
-        <Header isAuthenticated={this.props.isAuthenticated}/>
+        <Header isAuthenticated={this.props.isAuthenticated} logout={this.props.logout}/>
         <MainSection {...this.props} />
       </div>
     );
@@ -45,7 +48,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = (dispatch) => ({
   validateToken: bindActionCreators(validateToken, dispatch),
-  handleToken: bindActionCreators(handleToken, dispatch)
+  handleToken: bindActionCreators(handleToken, dispatch),
+  logout: bindActionCreators(logout, dispatch)
 })
 
 export default connect(

@@ -2,11 +2,11 @@ import React from 'react';
 import AuthEmail from './AuthEmail';
 import AuthButton from './AuthButton';
 
-const AuthContent = ({currentTab}) => {
+const AuthContent = ({currentTab, hideModal}) => {
   return (
     <div>
       <div className="auth-content">
-        <AuthButton currentTab={ currentTab } provider="twitter"/>
+        <AuthButton currentTab={ currentTab } hideModal={hideModal} provider="twitter"/>
         <p className="auth-seperator">or</p>
         <AuthEmail />
       </div>
