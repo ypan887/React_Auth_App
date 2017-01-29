@@ -19,7 +19,10 @@ add thunk middleware
 ## email sign in/ sign up
 
 
-## presist login status
+## presist login status in local storage
 
 
 ## logout
+
+## more
+presist state after page refresh

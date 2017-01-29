@@ -3,24 +3,31 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import AuthTab from '../components/AuthTab';
 import AuthContent from '../components/AuthContent';
-import { toggleTab } from '../actions';
+import { toggleTab, getInput, validateAuth } from '../actions';
 
-let AuthWrapper = ({currentTab, toggleTab, hideModal}) => (
-  <div>
-    <AuthTab
-      toggleTab = {toggleTab}
-      currentTab = {currentTab}
-    />
-    <AuthContent currentTab = {currentTab} hideModal= {hideModal}/>
-  </div>
-)
+let AuthWrapper = (props) => {
+  return(
+    <div>
+      <AuthTab
+        toggleTab = {props.toggleTab}
+        currentTab = {props.currentTab}
+      />
+      <AuthContent {...props} />
+    </div>
+  )
+}
+
 
 const mapStateToProps = state => ({
-  currentTab: state.toggleTab.currentTab
+  currentTab: state.toggleTab.currentTab,
+  isLoading: state.event.isLoading,
+  input: state.input
 })
 
 const mapDispatchToProps = dispatch => ({
-  toggleTab: bindActionCreators(toggleTab, dispatch)
+  toggleTab: bindActionCreators(toggleTab, dispatch),
+  getInput: bindActionCreators(getInput, dispatch),
+  validateAuth: bindActionCreators(validateAuth, dispatch)
 })
 
 export default connect(

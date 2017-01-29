@@ -10,7 +10,7 @@ const auth = (state = defaultState, action) => {
         userName: action.userName, isAuthenticated: true
       });
     case 'LOGGED_OUT':
-      return Object.assign({}, state, defaultState)
+      return defaultState;
     default:
       return state;
   }

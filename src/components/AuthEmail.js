@@ -1,16 +1,35 @@
 import React from 'react';
+import AuthInput from './AuthInput';
 
-const AuthEmail = () => {
+const AuthEmail = (props) => {
   return (
     <div className="auth-email">
-      <div className="input-wrapper">
-        <object data="images/envelope.svg" type="image/svg+xml" className="input-icon"></object>
-        <input type="email" name="email" className="auth-input" value="" placeholder="your email"/>
-      </div>
-      <div className="input-wrapper">
-        <object data="images/locked.svg" type="image/svg+xml" className="input-icon"></object>
-        <input type="password" name="password" className="auth-input" value=""placeholder="your password"/>
-      </div>
+      <AuthInput
+        value = {props.input.email}
+        type = "email"
+        getInput = {props.getInput}
+      />
+      <AuthInput
+        value = {props.input.password}
+        type = "password"
+        getInput = {props.getInput}
+      />
+      {
+        props.currentTab === 'sign up'?
+          (<div>
+            <AuthInput
+              value = {props.input.name}
+              type = "name"
+              getInput = {props.getInput}
+            />
+            <AuthInput
+              value = {props.input.nickname}
+              type = "nickname"
+              getInput = {props.getInput}
+            />
+          </div>)
+          : null
+      }
     </div>
   )
 }
