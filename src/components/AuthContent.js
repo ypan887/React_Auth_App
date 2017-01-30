@@ -8,14 +8,13 @@ const AuthContent = ({
   input,
   getInput,
   hideModal,
-  validateAuth
+  validateInput
   }) => {
 
   const handleClick = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    // validate input
-    validateAuth(input, currentTab);
+    validateInput(input, currentTab);
   };
 
   return (
@@ -28,7 +27,6 @@ const AuthContent = ({
         />
         <p className="auth-seperator">or</p>
         <AuthEmail
-          isLoading = { isLoading }
           input = { input }
           currentTab = { currentTab }
           getInput = { getInput }

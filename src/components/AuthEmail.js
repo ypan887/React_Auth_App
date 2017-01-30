@@ -1,31 +1,35 @@
 import React from 'react';
 import AuthInput from './AuthInput';
 
-const AuthEmail = (props) => {
+const AuthEmail = ({input, getInput, currentTab, }) => {
   return (
     <div className="auth-email">
       <AuthInput
-        value = {props.input.email}
+        value = { input.email }
         type = "email"
-        getInput = {props.getInput}
+        error = { input.errors.email }
+        getInput = { getInput }
       />
       <AuthInput
-        value = {props.input.password}
+        value = { input.password }
         type = "password"
-        getInput = {props.getInput}
+        error = { input.errors.password }
+        getInput = { getInput }
       />
       {
-        props.currentTab === 'sign up'?
+        currentTab === 'sign up'?
           (<div>
             <AuthInput
-              value = {props.input.name}
+              value = { input.name }
               type = "name"
-              getInput = {props.getInput}
+              error = { input.errors.name }
+              getInput = { getInput }
             />
             <AuthInput
-              value = {props.input.nickname}
+              value = { input.nickname }
               type = "nickname"
-              getInput = {props.getInput}
+              error = { input.errors.nickname }
+              getInput = { getInput }
             />
           </div>)
           : null

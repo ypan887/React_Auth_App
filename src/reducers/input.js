@@ -2,7 +2,8 @@ const defaultState = {
   email: '',
   password: '',
   name: '',
-  nickname: ''
+  nickname: '',
+  errors: {}
 };
 
 const input = (state = defaultState, action) => {
@@ -11,6 +12,8 @@ const input = (state = defaultState, action) => {
       return Object.assign({}, state, action.input);
     case 'EMPTY_INPUT':
       return defaultState;
+    case 'SET_INPUT_ERRORS':
+      return Object.assign({}, state, action.errors);
     default:
       return state;
   }

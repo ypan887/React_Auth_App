@@ -1,9 +1,9 @@
 import axios from 'axios';
+import Validator from 'validatorjs';
 import setAuthorizationToken from '../utils/setAuthorizationToken';
-import { browserHistory } from 'react-router'
+import { browserHistory } from 'react-router';
 
-const tokenUrl = "http://localhost:3000/auth/validate_token";
-let authUrl = "http://localhost:3000/auth";
+const baseUrl = "http://localhost:3000/auth";
 
 export const toggleTab = (tab) => {
   return {
@@ -22,6 +22,13 @@ export const getInput = (input) => {
 export const emptyInput = () => {
   return {
     type: "EMPTY_INPUT"
+  }
+}
+
+export const setInputError = (errors) => {
+  return {
+    type: "SET_INPUT_ERRORS",
+    errors: errors
   }
 }
 
@@ -62,6 +69,7 @@ export const handleToken = (data) => {
 
 export const validateToken = (auth) => {
   setAuthorizationToken(JSON.parse(auth));
+  const tokenUrl = baseUrl + "validate_token";
   return (dispatch, getState) => {
     axios.get(tokenUrl)
       .then((response) => {
@@ -75,9 +83,7 @@ export const validateToken = (auth) => {
 }
 
 export const validateAuth = (input, authAction) => {
-  if(authAction === "sign in"){
-    authUrl += "/sign_in"
-  }
+  const authUrl = baseUrl + ((authAction === "log in")? '/sign_in': '' )
 
   return (dispatch, getState) => {
     dispatch(toggleLoading());
@@ -92,8 +98,9 @@ export const validateAuth = (input, authAction) => {
     })
       .then((response) => {
         let data = response.data.data;
+        debugger;
         dispatch(handleToken(data));
-      })
+      }, () => { dispatch(toggleLoading()) })
       .then(() => {
         dispatch(emptyInput());
       })
@@ -104,4 +111,20 @@ export const validateAuth = (input, authAction) => {
         console.log(err);
       });
   }
+}
+
+export const validateInput = (data, authAction) => {
+  let rules = {
+    email: 'required|email',
+    password: 'required|min:8'
+  }
+
+  if(authAction === 'sign up') {
+    rules.name = 'required|min:4'
+  }
+
+  let validation = new Validator(data, rules);
+
+  return (validation.passes()? (validateAuth(data, authAction))
+    : (dispatch, getState) => { dispatch(setInputError(validation.errors))});
 }
