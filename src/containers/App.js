@@ -16,7 +16,7 @@ class App extends Component {
 
   componentWillMount(){
     let auth = localStorage.getItem('auth');
-    if (auth) {
+    if (auth && !this.props.isAuthenticated) {
       this.props.validateToken(auth);
     }
   }
