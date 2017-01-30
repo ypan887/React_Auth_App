@@ -20,7 +20,7 @@ class HeaderComponent extends Component {
   render() {
     let modalStyle = {
       borderRadius: '6px',
-      width: '250px'
+      width: '28%'
     };
     let loginClassName= this.props.isAuthenticated ? 'hidden' : '';
     let logoutClassName= !this.props.isAuthenticated ? 'hidden' : '';
