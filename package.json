@@ -76,7 +76,6 @@
     "redux": "^3.6.0",
     "redux-logger": "^2.7.4",
     "redux-thunk": "^2.2.0",
-    "validatorjs": "^3.11.0",
-    "whatwg-fetch": "^2.0.1"
+    "validatorjs": "^3.11.0"
   }
 }
