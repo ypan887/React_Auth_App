@@ -1,28 +1,30 @@
-## initial setup
+## Introduction
 
-## build the backend with Rails and devise-auth-token
+I am building a full-stack user authentication solution from scratch using RESTful api and React-Redux. This app allows user to sign in/ sign up using both a traditional email/password approach or OAuth approach. After successful sign in, user will be assigned an auth token. All subsequent request will be authenticated with token. The token will expire after certain time or be destroyed upon sign out. The app also features simple client side validation while using traditional authentication approach.
 
-change_headers_on_each_request was set to false, for simplicity. otherwise cline side need to keep track of the new token after each request.``
+The next step is to build a react-native version of the app in ios that consume the same api.
 
-## build component
+Here is the [Demo](https://user-authentication.herokuapp.com/)
 
-## Oauth button
+## Features
 
-add thunk middleware
+ReactJS
+Redux
+Redux-thunk
+AJAX
+Client Side Validation
+Token base authentication
+Oauth
 
-### received auth token from backend
+## RESTful Authentication Api
 
+This app communicate with an RESTful authentication api in the backend. I build the the Api with Rails and Devise Auht Token gem. But the app can work with any RESTful api as long as these following endpoints are exposed:
 
-### guard protected component
+POST     /auth/sign_in         endpoint to create user session
+POST     /auth                 endpoint to register user
+GET      /auth/:provider       endpoint to direct user to provider's oauth page
+GET      /auth/validate_token  endpoint to validate user's token 
 
+Of course you don't have to follow the URI above. You will also need to setup cors in your Api if your api is on a different domain.
 
-## email sign in/ sign up
-
-
-## presist login status in local storage
-
-
-## logout
-
-## more
-presist state after page refresh
+You can find the source of my Api [here](https://github.com/ypan887/auth_api)
