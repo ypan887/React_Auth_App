@@ -33,6 +33,7 @@ body {
   background: #fff;
   position: relative;
   text-align: center;
+  cursor: default;
 }
 
 .auth-content {
@@ -94,7 +95,6 @@ body {
 
 li.current-tab {
   box-shadow: 0 1px 0 0 #5c666f;
-  cursor: default;
   color: #5c666f
 }
 
@@ -236,4 +236,9 @@ li.current-tab {
 
 .loading-img {
   width: 20%;
+}
+
+/* others */
+.oauth-button,input,a:focus {
+  outline:none;
 }

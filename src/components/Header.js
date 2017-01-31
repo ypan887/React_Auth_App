@@ -26,10 +26,17 @@ class HeaderComponent extends Component {
   }
 
   render() {
-    let modalStyle = {
+    const modalStyle = {
       borderRadius: '6px',
       width: '28%'
     };
+    const backdropStyle = {
+      cursor: 'default'
+    };
+    const contentStyle = {
+      outline:'none'
+    };
+
     let loginClassName= this.props.isAuthenticated ? 'hidden' : '';
     let logoutClassName= !this.props.isAuthenticated ? 'hidden' : '';
 
@@ -43,7 +50,7 @@ class HeaderComponent extends Component {
         <Nav>
           <NavItem onClick={this.showModal} className={loginClassName}>
             login
-            <Modal ref="modal" modalStyle={modalStyle} >
+            <Modal ref="modal" modalStyle={modalStyle} backdropStyle={backdropStyle} contentStyle={contentStyle}>
               <div className="auth-pane">
                 <AuthWrapper />
               </div>
