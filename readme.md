@@ -8,22 +8,22 @@ Here is the [Demo](https://user-authentication.herokuapp.com/)
 
 ## Features
 
-ReactJS
-Redux
-Redux-thunk
-AJAX
-Client Side Validation
-Token base authentication
-Oauth
+- ReactJS
+- Redux
+- Redux-thunk
+- AJAX
+- Client Side Validation
+- Token base authentication
+- Oauth
 
 ## RESTful Authentication Api
 
 This app communicate with an RESTful authentication api in the backend. I build the the Api with Rails and Devise Auht Token gem. But the app can work with any RESTful api as long as these following endpoints are exposed:
 
-POST     /auth/sign_in         endpoint to create user session
-POST     /auth                 endpoint to register user
-GET      /auth/:provider       endpoint to direct user to provider's oauth page
-GET      /auth/validate_token  endpoint to validate user's token 
+- POST     /auth/sign_in         endpoint to create user session
+- POST     /auth                 endpoint to register user
+- GET      /auth/:provider       endpoint to direct user to provider's oauth page
+- GET      /auth/validate_token  endpoint to validate user's token 
 
 Of course you don't have to follow the URI above. You will also need to setup cors in your Api if your api is on a different domain.
 
