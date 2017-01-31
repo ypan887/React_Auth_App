@@ -1,20 +1,28 @@
 import React, { Component } from 'react';
-import { Nav, Navbar, NavItem, Header, Brand } from 'react-bootstrap';
+import { Nav, Navbar, NavItem } from 'react-bootstrap';
 import AuthWrapper from '../containers/AuthWrapper'
 import Modal from 'boron/DropModal'
 
 class HeaderComponent extends Component {
   constructor() {
     super();
-    this.login = this.login.bind(this);
+    this.showModal = this.showModal.bind(this);
+    this.hideModal = this.hideModal.bind(this);
   }
 
-  login() {
+  showModal() {
     this.refs.modal.show();
   }
 
   hideModal(){
     this.refs.modal.hide();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.isAuthenticated !== this.props.isAuthenticated) {
+      // since render method not called here, need to update state manaully
+      this.refs.modal.state = { willHidden: true, hidden: true }
+    }
   }
 
   render() {
@@ -33,11 +41,11 @@ class HeaderComponent extends Component {
           </Navbar.Brand>
         </Navbar.Header>
         <Nav>
-          <NavItem onClick={this.login} className={loginClassName}>
+          <NavItem onClick={this.showModal} className={loginClassName}>
             login
             <Modal ref="modal" modalStyle={modalStyle} >
               <div className="auth-pane">
-                <AuthWrapper hideModal={this.hideModal.bind(this)}/>
+                <AuthWrapper />
               </div>
             </Modal>
           </NavItem>

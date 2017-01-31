@@ -1,9 +1,8 @@
 import axios from 'axios';
 import Validator from 'validatorjs';
 import setAuthorizationToken from '../utils/setAuthorizationToken';
+import { authBaseUrl } from '../utils/apiConstant';
 import { browserHistory } from 'react-router';
-
-const baseUrl = "http://localhost:3000/auth";
 
 export const toggleTab = (tab) => {
   return {
@@ -82,7 +81,7 @@ export const handleToken = (data) => {
 
 export const validateToken = (auth) => {
   setAuthorizationToken(JSON.parse(auth));
-  const tokenUrl = baseUrl + "validate_token";
+  const tokenUrl = authBaseUrl + "/validate_token";
   return (dispatch, getState) => {
     axios.get(tokenUrl)
       .then((response) => {
@@ -96,7 +95,7 @@ export const validateToken = (auth) => {
 }
 
 export const validateAuth = (input, authAction) => {
-  const authUrl = baseUrl + ((authAction === "log in")? '/sign_in': '' )
+  const authUrl = authBaseUrl + ((authAction === "log in")? '/sign_in': '' )
 
   return (dispatch, getState) => {
     dispatch(toggleLoading());

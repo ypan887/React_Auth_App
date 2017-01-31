@@ -1,7 +1,7 @@
 import React from 'react';
 import AuthInput from './AuthInput';
 
-const AuthEmail = ({input, getInput, currentTab, }) => {
+const AuthEmail = ({ input, getInput, currentTab }) => {
   return (
     <div className="auth-email">
       <AuthInput

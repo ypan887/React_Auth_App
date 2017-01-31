@@ -8,7 +8,6 @@ const AuthContent = ({
   input,
   error,
   getInput,
-  hideModal,
   validateInput
   }) => {
 
@@ -23,7 +22,6 @@ const AuthContent = ({
       <div className="auth-content">
         <AuthButton
           currentTab = { currentTab }
-          hideModal = { hideModal }
           provider = "twitter"
         />
         <p className="auth-seperator">or</p>

@@ -5,9 +5,9 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux';
 import { validateToken, handleToken, logout } from '../actions';
+import { baseUrl } from '../utils/apiConstant'
 import Header from '../components/Header';
 import MainSection from '../components/MainSection';
-import setAuthorizationToken from '../utils/setAuthorizationToken';
 
 class App extends Component {
   constructor(props) {
@@ -24,7 +24,7 @@ class App extends Component {
   componentDidMount(){
     window.addEventListener("message",
       (e) => {
-        if(e.origin == "http://localhost:3000" && e.data["auth_token"] && e.data["user_name"]){
+        if(e.origin===baseUrl && e.data["auth_token"] && e.data["user_name"]){
           window.focus();
           this.props.handleToken(e.data)
         }

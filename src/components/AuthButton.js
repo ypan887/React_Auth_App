@@ -1,17 +1,15 @@
 import React from 'react';
+import { authBaseUrl, authOriginUrl } from '../utils/apiConstant';
 
-const AuthButton = ({currentTab, hideModal, provider}) => {
-  let auth = () => {
-    hideModal();
-    //let BASEURL = 'https://user-auth-api.herokuapp.com'
-    let BASEURL = 'http://localhost:3000';
-    let authUrl = BASEURL
-                + `/auth/${provider}`
-                + '?auth_origin_url=http://localhost:8000';
-    let popWin = window.open(authUrl);
+const AuthButton = ({currentTab, provider}) => {
+  const auth = () => {
+    let authUrl
+      = `${authBaseUrl}/${provider}?auth_origin_url=${authOriginUrl}`
+    window.open(authUrl);
   };
-  let displayText = currentTab +` with ${provider}`;
-  let oauthClassName = `oauth-icon ${provider}-icon`;
+
+  const displayText = currentTab +` with ${provider}`;
+  const oauthClassName = `oauth-icon ${provider}-icon`;
 
   return(
     <div className="auth-oauth">
