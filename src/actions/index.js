@@ -25,6 +25,19 @@ export const emptyInput = () => {
   }
 }
 
+export const setErrors = (error) => {
+  return {
+    type: 'SET_ERRORS',
+    error
+  }
+}
+
+export const cleanErrors = () => {
+  return {
+    type: 'CLEAN_ERRORS'
+  }
+}
+
 export const setInputError = (errors) => {
   return {
     type: "SET_INPUT_ERRORS",
@@ -98,17 +111,23 @@ export const validateAuth = (input, authAction) => {
     })
       .then((response) => {
         let data = response.data.data;
-        debugger;
         dispatch(handleToken(data));
-      }, () => { dispatch(toggleLoading()) })
+      })
       .then(() => {
         dispatch(emptyInput());
-      })
-      .then(() => {
         dispatch(toggleLoading());
+        dispatch(cleanErrors());
       })
       .catch((err) => {
-        console.log(err);
+        dispatch(toggleLoading());
+        const errors = err.response.data.errors;
+        let errString = '';
+        if(errors.constructor === Array) {
+          errString = errors[0];
+        } else {
+          errString = errors.full_messages[0];
+        }
+        dispatch(setErrors(errString))
       });
   }
 }

@@ -6,6 +6,7 @@ const AuthContent = ({
   currentTab,
   isLoading,
   input,
+  error,
   getInput,
   hideModal,
   validateInput
@@ -18,7 +19,7 @@ const AuthContent = ({
   };
 
   return (
-    <div>
+    <div className='has-error'>
       <div className="auth-content">
         <AuthButton
           currentTab = { currentTab }
@@ -32,6 +33,7 @@ const AuthContent = ({
           getInput = { getInput }
         />
       </div>
+      { error && <span className='help-block'>{error}</span> }
       <button
         className = "auth-submit"
         type = "submit"

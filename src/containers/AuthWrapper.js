@@ -17,11 +17,11 @@ let AuthWrapper = (props) => {
   )
 }
 
-
 const mapStateToProps = state => ({
   currentTab: state.toggleTab.currentTab,
   isLoading: state.event.isLoading,
-  input: state.input
+  input: state.input,
+  error: state.event.error
 })
 
 const mapDispatchToProps = dispatch => ({

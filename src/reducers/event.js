@@ -1,5 +1,6 @@
 const defaultState = {
-  isLoading: false
+  isLoading: false,
+  error: ''
 };
 
 const event = (state = defaultState, action) => {
@@ -7,6 +8,14 @@ const event = (state = defaultState, action) => {
     case 'TOGGLE_LOADING':
       return Object.assign({}, state, {
         isLoading: !state.isLoading
+      });
+    case 'SET_ERRORS':
+      return Object.assign({}, state, {
+        error: action.error
+      });
+    case 'CLEAN_ERRORS':
+      return Object.assign({}, state, {
+        error: ''
       });
     default:
       return state;
