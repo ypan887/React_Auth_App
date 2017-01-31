@@ -40,7 +40,7 @@ const AuthContent = ({
         onClick = { handleClick }
         disabled = { isLoading }
       >
-        { isLoading? <img src={loadingSVG} alt="loading request" className="loading-img"/> : currentTab }
+        { isLoading? <img src={ loadingSVG } className="loading-img"/> : currentTab }
       </button>
     </div>
   )

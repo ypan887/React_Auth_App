@@ -193,49 +193,10 @@ li.current-tab {
   width: 14px;
 }
 
-/* modal */
-.modals {
-  position: fixed;
-  width: 250px;
-  transform: translate3d(-50%, -50%, 0px);
-  top: 50%;
-  left: 50%;
-  background-color: white;
-  z-index: 1050;
-  animation-duration: 0.4s;
-  animation-fill-mode: forwards;
-  animation-name: anim_11483429333892;
-  animation-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
-  border-radius: 6px;
-}
-
-.modal-tab {
-  margin: 0px;
-  animation-duration: 0.4s;
-  animation-fill-mode: forwards;
-  animation-delay: 0.25s;
-  animation-name: anim_51483429333893;
-  animation-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
-}
-
-.modal-space {
-  position: fixed;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
-  z-index: 1040;
-  background-color: rgb(55, 58, 71);
-  animation-duration: 0.4s;
-  animation-fill-mode: forwards;
-  animation-name: anim_31483429333893;
-  animation-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
-}
-
 /* event */
 
 .loading-img {
-  width: 20%;
+  width: 15%;
 }
 
 /* others */
