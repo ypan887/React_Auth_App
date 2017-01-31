@@ -11,6 +11,8 @@ const AuthContent = ({
   validateInput
   }) => {
 
+  const loadingSVG = require('../images/loading.svg');
+
   const handleClick = (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -38,7 +40,7 @@ const AuthContent = ({
         onClick = { handleClick }
         disabled = { isLoading }
       >
-        { isLoading? <img src="images/loading.svg" alt="123" className="loading-img"/> : currentTab }
+        { isLoading? <img src={loadingSVG} alt="loading request" className="loading-img"/> : currentTab }
       </button>
     </div>
   )

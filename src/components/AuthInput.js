@@ -12,7 +12,7 @@ const AuthInput = ({value, type, error, getInput}) => {
     <div className='has-error'>
     { error && <span className='help-block'>{error[0]}</span> }
       <div className='input-wrapper'>
-        <img src={svgURL} className='input-icon' />
+        <img src={svgURL} alt='icon' className='input-icon' />
         <input
           type = { type }
           name = { type }
