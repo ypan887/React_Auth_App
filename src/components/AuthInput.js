@@ -6,11 +6,13 @@ const AuthInput = ({value, type, error, getInput}) => {
     getInput({[name]: e.target.value})
   }
 
+  const svgURL = require(`../images/${type}.svg`);
+
   return (
     <div className='has-error'>
     { error && <span className='help-block'>{error[0]}</span> }
       <div className='input-wrapper'>
-        <object data={`images/${type}.svg`} type='image/svg+xml' className='input-icon'></object>
+        <img src={svgURL} className='input-icon' />
         <input
           type = { type }
           name = { type }
