@@ -4,7 +4,7 @@ import { Grid, Row } from 'react-bootstrap';
 const MainSection = (props) => {
   return (
     <Grid>
-      <Row>
+      <Row className='main-content'>
         {props.children}
       </Row>
     </Grid>

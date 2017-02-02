@@ -27,8 +27,7 @@ class HeaderComponent extends Component {
 
   render() {
     const modalStyle = {
-      borderRadius: '6px',
-      width: '28%'
+      borderRadius: '6px'
     };
     const backdropStyle = {
       cursor: 'default'
@@ -50,7 +49,13 @@ class HeaderComponent extends Component {
         <Nav>
           <NavItem onClick={this.showModal} className={loginClassName}>
             login
-            <Modal ref="modal" modalStyle={modalStyle} backdropStyle={backdropStyle} contentStyle={contentStyle}>
+            <Modal
+              ref="modal"
+              modalStyle={modalStyle}
+              backdropStyle={backdropStyle}
+              contentStyle={contentStyle}
+              className='drop-modal'
+            >
               <div className="auth-pane">
                 <AuthWrapper />
               </div>

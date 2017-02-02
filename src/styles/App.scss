@@ -1,23 +1,27 @@
+/* Responsive */
+@media screen and (max-width: 599px) {
+  .drop-modal {
+    max-width: 85%;
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 999px) {
+  .drop-modal {
+    max-width: 60%;
+  }
+}
+
+@meida screen and (min-width: 1000px) {
+  .drop-modal {
+    width: 35%;
+    max-width: 600px;
+  }
+}
+
 /* Base Application Styles */
 body {
   color: #fff;
   background: #222;
-}
-
-.index img {
-  margin: 40px auto;
-  border-radius: 4px;
-  background: #fff;
-  display: block;
-}
-
-.index .notice {
-  margin: 20px auto;
-  padding: 15px 0;
-  text-align: center;
-  border: 1px solid #000;
-  border-width: 1px 0;
-  background: #666;
 }
 
 /* Nav Bar */
@@ -37,24 +41,24 @@ body {
 }
 
 .auth-content {
-  padding: 20px;
+  padding: 1.5em;
   box-sizing: border-box;
 }
 
 .auth-submit {
   border: 0;
-  padding: 14px;
+  padding: 1.5em;
   display: block;
   box-sizing: border-box;
   width: 100%;
-  height: 70px;
+  height: 20%;
   overflow: hidden;
   border-radius: 0 0 5px 5px;
   -webkit-transition: 0.2s ease-in-out;
   transition: 0.2s ease-in-out;
   color: #fff;
-  letter-spacing: 1px;
-  font-size: 14px;
+  letter-spacing: 0.1em;
+  font-size: 1.5em;
   text-transform: uppercase;
   background-color: rgb(234, 83, 35);
 }
@@ -64,8 +68,8 @@ body {
   background: #fff;
   padding: 0;
   margin: 0;
-  font-size: 13px;
-  letter-spacing: 0.7px;
+  font-size: 1.2em;
+  letter-spacing: 0.1em;
   box-shadow: 0 1px 0 0 rgba(92,102,111,0.2);
   display: flex;
   -ms-flex-direction: row;
@@ -86,7 +90,7 @@ body {
     float: left;
     margin: 0;
     text-align: center;
-    padding: 11px 10px;
+    padding: 1.2em;
     display: block;
     text-decoration: none;
     font-weight: 500;
@@ -99,7 +103,8 @@ li.current-tab {
 }
 
 .auth-oauth {
-  height: 40px;
+  min-width: 48px;
+  min-height: 48px;
 }
 
 .oauth-button {
@@ -112,13 +117,13 @@ li.current-tab {
   overflow: hidden;
   border-radius: 3px;
   position: relative;
-  height: 40px;
+  min-height: 48px;
   background-color: #4285f4;
 }
 
 .oauth-icon {
-  width: 40px;
-  height: 40px;
+  min-width: 48px;
+  min-height: 48px;
   position: absolute;
   top: 0;
   left: 0;
@@ -132,15 +137,13 @@ li.current-tab {
   display: block;
   overflow: hidden;
   width: 100%;
-  padding-left: 54px;
-  padding-right: 15px;
-  line-height: 40px;
+  padding-left: calc(5% + 48px);
   text-align: left;
   text-transform: uppercase;
   text-overflow: ellipsis;
-  font-size: 10px;
+  font-size: 1em;
   font-weight: 600;
-  letter-spacing: 0.7px;
+  letter-spacing: 0.1em;
   color: #fff;
   white-space: nowrap;
 }
@@ -153,11 +156,11 @@ li.current-tab {
 
 .auth-seperator {
   color: black;
-  font-size: 13px;
+  font-size: 1.5em;
   line-height: 1.8;
   text-align: center;
-  margin-top: 15px;
-  margin-bottom: 15px;
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 
 .input-wrapper {
@@ -165,17 +168,18 @@ li.current-tab {
   border: 1px solid #f1f1f1;
   position: relative;
   background: #f1f1f1;
-  padding-left: 40px;
-  margin-bottom: 10px;
+  padding-left: 48px;
+  margin-bottom: 1em;
   position: relative;
+  min-height: 48px;
 }
 
 .auth-input {
   border: 0;
   padding: 0 14px;
   right: 0;
-  height: 40px;
-  font-size: 13px;
+  min-height: 48px;
+  font-size: 1.2em;
   width: 100%;
   border-radius: 0 2px 2px 0;
   box-sizing: border-box;
@@ -186,13 +190,17 @@ li.current-tab {
 
 .input-icon {
   position: absolute;
-  font-size: 12px;
+  font-size: 1.2em;
   top: 13px;
   left: 14px;
   background-color: transparent;
-  width: 14px;
+  width: 20px;
 }
 
+/* main */
+.main-content {
+  padding: 15px;
+}
 /* event */
 
 .loading-img {
